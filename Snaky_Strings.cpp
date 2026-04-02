@@ -67,23 +67,23 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def3(n, c, k);
-    inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
-        }
+    string s;
+    cin >> s;
+    if (s[0] == 's' || s[3] == 's')
+    {
+        outl("Yes");
+        return;
     }
+    outl("No");
 }
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

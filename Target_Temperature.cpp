@@ -65,17 +65,44 @@ ll power(ll x, ll y)
     return res;
 }
 
+// void solve()
+// {
+//     def1(n);
+//     inv(b, n);
+//     sort(b.begin(), b.end());
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (b[i] > i + 1)
+//         {
+//             outl("No");
+//             return;
+//         }
+//     }
+//     outl("Yes");
+// }
 void solve()
 {
-    def3(n, c, k);
+    def1(n);
     inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
+    if (n == 2)
+    {
+        outl("Yes");
+        return;
+    }
+    ll a = *max_element(v.begin(), v.end());
+    map<ll, ll> m;
+    for (auto &i : v)
+        m[i]++;
+    for (auto p : m)
+    {
+        if (p.second > 1 && p.first != a)
+        {
+            outl("No");
+            return;
         }
     }
+    outl("Yes");
 }
 int main()
 {

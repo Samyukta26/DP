@@ -64,18 +64,94 @@ ll power(ll x, ll y)
     }
     return res;
 }
+// void solve()
+// {
+//     int n, k;
+//     cin >> n >> k;
+
+//     vector<int> a(n), b(n);
+//     for (auto &x : a)
+//         cin >> x;
+//     for (auto &x : b)
+//         cin >> x;
+
+//     // Step 1: build allowed set (last k elements of a)
+//     unordered_set<int> allowed;
+//     for (int i = n - k; i < n; i++)
+//         allowed.insert(a[i]);
+
+//     // Step 2: check edge positions directly
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (b[i] == -1)
+//             continue;
+
+//         // edge indices
+//         if (i < n - k || i >= k)
+//         {
+//             if (b[i] != a[i])
+//             {
+//                 cout << "NO\n";
+//                 return;
+//             }
+//         }
+//     }
+
+//     // Step 3: handle middle segment separately
+//     unordered_set<int> seen;
+
+//     for (int i = n - k; i < k; i++)
+//     {
+//         if (b[i] == -1)
+//             continue;
+
+//         // must belong to allowed set
+//         if (!allowed.count(b[i]))
+//         {
+//             cout << "NO\n";
+//             return;
+//         }
+
+//         // must be unique
+//         if (seen.count(b[i]))
+//         {
+//             cout << "NO\n";
+//             return;
+//         }
+
+//         seen.insert(b[i]);
+//     }
+
+//     cout << "YES\n";
+// }
 
 void solve()
 {
-    def3(n, c, k);
-    inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> a(n), b(n);
+    for (int i = 0; i < n; i++) cin >> a[i];
+    for (int i = 0; i < n; i++) cin >> b[i];
+
+    vector<int> val(k, -1);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (b[i] == -1) continue;
+
+        int g = i % k;
+
+        if (val[g] == -1)
+            val[g] = b[i];
+        else if (val[g] != b[i])
+        {
+            cout << "NO\n";
+            return;
         }
     }
+
+    cout << "YES\n";
 }
 int main()
 {

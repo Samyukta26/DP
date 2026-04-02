@@ -67,16 +67,18 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def3(n, c, k);
+    def1(n);
     inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
-        }
+    vi v1 = v;
+    sortvr(v1);
+    if (v == v1)
+    {
+        outl("No");
+        return;
     }
+    outl("Yes");
 }
+
 int main()
 {
     ios::sync_with_stdio(false);

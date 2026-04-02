@@ -15,7 +15,7 @@ using namespace std;
 #define nl cout << endl
 
 #define def1(n) \
-    ll n;       \
+    ll n;      \
     cin >> n
 #define def2(a, b) \
     ll a, b;       \
@@ -38,8 +38,8 @@ using namespace std;
 #define out4(a, b, c, d) cout << a << " " << b << " " << c << " " << d << endl
 #define out5(a, b, c, d, e) cout << a << " " << b << " " << c << " " << d << " " << e << endl
 
-#define inv(v, n)              \
-    vi v(n);                   \
+#define inv(v, n)             \
+    vi v(n);                  \
     for (ll i = 0; i < n; i++) \
         cin >> v[i];
 
@@ -67,16 +67,13 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def3(n, c, k);
-    inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
-        }
-    }
+    def1(n);
+    if((n%2==0) && (n%5!=0)){ outl(0); return;}
+    if((n%2!=0) && (n%5==0)){ outl(0); return;}
+    if((n%2==0) && (n%5==0)){ outl(2); return;}
+    outl(1);
 }
+
 int main()
 {
     ios::sync_with_stdio(false);

@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
+
 
 #define ll long long
 #define vi vector<ll>
@@ -64,19 +63,37 @@ ll power(ll x, ll y)
     }
     return res;
 }
+ll lcm(long long a, long long b)
+{
+    return (a / gc#include <bits/stdc++.h>
+using namespace std;d(a, b)) * b;
+}
 
 void solve()
 {
-    def3(n, c, k);
+    def1(n);
     inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
+    inv(b, n);
+    ll ct = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        ll a = 0;
+        if (i == 0)
+            a = gcd(v[0], v[1]);
+        else if (i == n - 1)
+            a = gcd(v[n - 1], v[n - 2]);
+        else
+        {
+            ll g1 = gcd(v[i - 1], v[i]);
+            ll g2 = gcd(v[i], v[i + 1]);
+            a = lcm(g1, g2);
         }
+        if (a < v[i])
+            ct++;
     }
+    outl(ct);
 }
+
 int main()
 {
     ios::sync_with_stdio(false);

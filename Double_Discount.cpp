@@ -67,15 +67,39 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def3(n, c, k);
-    inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> a(n), b(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    for (int i = 0; i < n; i++)
+        cin >> b[i];
+
+    int ans = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            int cost1 = a[i];
+            int cost2 = a[j];
+
+            int maxCost = max(cost1, cost2);
+
+            int discount = min(maxCost / 2, 100);
+
+            int totalCost = cost1 + cost2 - discount;
+
+            if (totalCost <= k)
+            {
+                ans = max(ans, b[i] + b[j]);
+            }
         }
     }
+
+    cout << ans << endl;
 }
 int main()
 {

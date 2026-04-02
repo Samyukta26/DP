@@ -67,16 +67,28 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def3(n, c, k);
-    inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
-        }
+    def1(n);
+    string a;
+    cin >> a;
+    string b;
+    cin >> b;
+    if (a == b)
+    {
+        outl(0);
+        return;
     }
+    ll x = count(a.begin(), a.end(), '0');
+    ll x1 = count(a.begin(), a.end(), '1');
+    ll y = count(b.begin(), b.end(), '0');
+    ll y1 = count(b.begin(), b.end(), '1');
+    if (x == n || x1 == n || y == n || y1 == n)
+    {
+        outl(1);
+        return;
+    }
+    outl(0);
 }
+
 int main()
 {
     ios::sync_with_stdio(false);

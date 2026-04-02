@@ -67,15 +67,22 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def3(n, c, k);
+    def1(n);
     inv(v, n);
-    sortvr(v);
-    for(int i=0; i<n; i++){
-        if(v[i]==c) c+=v[i];
-        else if(v[i]<c){
-            c+=min(k,)
-        }
+
+    if (n == 1)
+    {
+        outl(1);
+        return;
     }
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << 2;
+        if (i != n - 1)
+            cout << " ";
+    }
+    cout << endl;
 }
 int main()
 {
