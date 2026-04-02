@@ -82,7 +82,7 @@ void solve()
         if (i != n - 1)
             cout << " ";
     }
-    cout << endl;
+ 
 }
 int main()
 {
