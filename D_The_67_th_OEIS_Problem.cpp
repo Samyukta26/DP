@@ -3,7 +3,7 @@ using namespace std;
 
 #define ll long long
 #define vi vector<ll>
-#define vvi vector<vector<ll>>jkooi
+#define vvi vector<vector<ll>>
 #define maxheap priority_queue<ll>
 #define minheap priority_queue<ll, vi, greater<ll>>
 
@@ -13,7 +13,6 @@ using namespace std;
 #define yes cout << "YES" << endl
 #define no cout << "NO" << endl
 #define nl cout << endl
-#include <bits/stdc++.h>
 
 #define def1(n) \
     ll n;       \
@@ -68,22 +67,18 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    inv(v, n);
+    int n;
+    cin >> n;
 
-    if (n == 1)
-    {
-        outl(1);
-        return;
-    }
+    int odd = 1;
 
     for (int i = 0; i < n; i++)
     {
-        cout << 2;
-        if (i != n - 1)
-            cout << " ";
+        cout << odd * (odd + 2) << " ";
+        odd += 2;
     }
- 
+
+    cout << endl;
 }
 int main()
 {

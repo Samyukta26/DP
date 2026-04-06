@@ -3,7 +3,7 @@ using namespace std;
 
 #define ll long long
 #define vi vector<ll>
-#define vvi vector<vector<ll>>jkooi
+#define vvi vector<vector<ll>>
 #define maxheap priority_queue<ll>
 #define minheap priority_queue<ll, vi, greater<ll>>
 
@@ -13,7 +13,6 @@ using namespace std;
 #define yes cout << "YES" << endl
 #define no cout << "NO" << endl
 #define nl cout << endl
-#include <bits/stdc++.h>
 
 #define def1(n) \
     ll n;       \
@@ -71,20 +70,55 @@ void solve()
     def1(n);
     inv(v, n);
 
-    if (n == 1)
+    ll ct = 0;
+    for (auto &i : v)
     {
-        outl(1);
+        if (i % 2 == 0)
+            ct++;
+    }
+    if (ct == n || n - ct == n)
+    {
+        outl(0);
         return;
     }
 
+    sort(v.begin(), v.end());
+
+    ll a = v.back();
+
+    if (a & 1)
+    {
+        outl(ct);
+        return;
+    }
+
+    ll m = -1;
+    for (auto &i : v)
+        if (i & 1)
+            m = i;
+    ll q = 0;
+
+    bool b = true;
+
     for (int i = 0; i < n; i++)
     {
-        cout << 2;
-        if (i != n - 1)
-            cout << " ";
+        if (v[i] % 2 == 0)
+        {
+            if (m > v[i])
+            {
+                m += v[i];
+            }
+            else
+            {
+                outl(ct + 1);
+                return;
+            }
+        }
     }
- 
+
+    outl(ct);
 }
+
 int main()
 {
     ios::sync_with_stdio(false);

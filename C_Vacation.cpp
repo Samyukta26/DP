@@ -3,7 +3,7 @@ using namespace std;
 
 #define ll long long
 #define vi vector<ll>
-#define vvi vector<vector<ll>>jkooi
+#define vvi vector<vector<ll>>
 #define maxheap priority_queue<ll>
 #define minheap priority_queue<ll, vi, greater<ll>>
 
@@ -13,7 +13,6 @@ using namespace std;
 #define yes cout << "YES" << endl
 #define no cout << "NO" << endl
 #define nl cout << endl
-#include <bits/stdc++.h>
 
 #define def1(n) \
     ll n;       \
@@ -65,33 +64,71 @@ ll power(ll x, ll y)
     }
     return res;
 }
+ll a(int i, int last, vector<vector<ll>> &v, vector<vector<ll>> &dp)
+{
 
+    if (i == v.size())
+        return 0;
+
+    if (dp[i][last] != -1)
+        return dp[i][last];
+
+    ll ans = 0;
+
+    if (last == 0)
+    {
+        ans = max(
+            v[i][1] + a(i + 1, 1, v, dp),
+            v[i][2] + a(i + 1, 2, v, dp));
+    }
+    else if (last == 1)
+    {
+        ans = max(
+            v[i][0] + a(i + 1, 0, v, dp),
+            v[i][2] + a(i + 1, 2, v, dp));
+    }
+    else if (last == 2)
+    {
+        ans = max(
+            v[i][0] + a(i + 1, 0, v, dp),
+            v[i][1] + a(i + 1, 1, v, dp));
+    }
+    else
+    {
+        ans = max({v[i][0] + a(i + 1, 0, v, dp),
+                   v[i][1] + a(i + 1, 1, v, dp),
+                   v[i][2] + a(i + 1, 2, v, dp)});
+    }
+
+    return dp[i][last] = ans;
+}
 void solve()
 {
-    def1(n);
-    inv(v, n);
+    int n;
+    cin >> n;
 
-    if (n == 1)
-    {
-        outl(1);
-        return;
-    }
+    vector<vector<ll>> v(n, vector<ll>(3));
 
     for (int i = 0; i < n; i++)
     {
-        cout << 2;
-        if (i != n - 1)
-            cout << " ";
+        for (int j = 0; j < 3; j++)
+        {
+            cin >> v[i][j];
+        }
     }
- 
+
+    vector<vector<ll>> dp(n, vector<ll>(4, -1));
+
+    cout << a(0, 3, v, dp);
 }
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

@@ -3,7 +3,7 @@ using namespace std;
 
 #define ll long long
 #define vi vector<ll>
-#define vvi vector<vector<ll>>jkooi
+#define vvi vector<vector<ll>>
 #define maxheap priority_queue<ll>
 #define minheap priority_queue<ll, vi, greater<ll>>
 
@@ -13,7 +13,6 @@ using namespace std;
 #define yes cout << "YES" << endl
 #define no cout << "NO" << endl
 #define nl cout << endl
-#include <bits/stdc++.h>
 
 #define def1(n) \
     ll n;       \
@@ -68,30 +67,54 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    inv(v, n);
-
-    if (n == 1)
+    string s;
+    string t;
+    cin >> s >> t;
+    ll n = s.size();
+    ll m = t.size();
+    vector<vector<ll>> dp(n + 1, vector<ll>(m + 1, 0));
+    for (int i = 1; i <= n; i++)
     {
-        outl(1);
-        return;
+        for (int j = 1; j <= m; j++)
+        {
+            if (s[i - 1] == t[j - 1])
+            {
+                dp[i][j] = 1 + dp[i - 1][j - 1];
+            }
+            else
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+        }
     }
-
-    for (int i = 0; i < n; i++)
+    ll a = n;
+    ll b = m;
+    string s1;
+    while (a > 0 && b > 0)
     {
-        cout << 2;
-        if (i != n - 1)
-            cout << " ";
+        if (s[a - 1] == t[b - 1])
+        {
+            s1.push_back(s[a - 1]);
+            a--;
+            b--;
+        }
+        else
+        {
+            if (dp[a][b - 1] > dp[a - 1][b])
+                b--;
+            else
+                a--;
+        }
     }
- 
+    reverse(s1.begin(), s1.end());
+    cout << s1;
 }
+
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;
