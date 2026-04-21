@@ -68,39 +68,16 @@ ll power(ll x, ll y)
 void solve()
 {
     def1(n);
-    inv(v, n);
-    ll a = 0;
-    ll b = 0;
-    ll i = 0;
-    ll j = n - 1;
-    long long maxi = LLONG_MIN;
+    string s;
+    cin >> s;
     ll ct = 0;
-    a += v[i];
-    b += v[j];
-    while (i < j)
+    set<char> st;
+    for (auto &i : s)
     {
-
-        if (a < b)
-        {
-            i++;
-            a += v[i];
-        }
-        else if (b < a)
-        {
-            j--;
-            b += v[j];
-        }
-        else
-        {
-            ct = (i + 1) + (n - j);
-            maxi = max(ct, maxi);
-            i++;
-            j--;
-            a += v[i];
-            b += v[j];
-        }
+        st.insert(i);
+        ct += st.size();
     }
-    outl(max(ct, maxi));
+    outl(ct);
 }
 
 int main()

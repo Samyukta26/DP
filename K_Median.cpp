@@ -67,40 +67,24 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    inv(v, n);
-    ll a = 0;
-    ll b = 0;
-    ll i = 0;
-    ll j = n - 1;
-    long long maxi = LLONG_MIN;
-    ll ct = 0;
-    a += v[i];
-    b += v[j];
-    while (i < j)
-    {
+   int N, K;
+        cin >> N >> K;
 
-        if (a < b)
-        {
-            i++;
-            a += v[i];
+        vector<int> A(N);
+        for(int i = 0; i < N; i++) cin >> A[i];
+
+        sort(A.begin(), A.end());
+
+        int M = N - K;
+
+        int L = (M - 1) / 2;
+        int R = N - 1 - (M - 1) / 2;
+
+        for(int i = L; i <= R; i++) {
+            cout << A[i] << " ";
         }
-        else if (b < a)
-        {
-            j--;
-            b += v[j];
-        }
-        else
-        {
-            ct = (i + 1) + (n - j);
-            maxi = max(ct, maxi);
-            i++;
-            j--;
-            a += v[i];
-            b += v[j];
-        }
-    }
-    outl(max(ct, maxi));
+        cout << "\n";
+    
 }
 
 int main()

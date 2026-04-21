@@ -67,40 +67,12 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    inv(v, n);
-    ll a = 0;
-    ll b = 0;
-    ll i = 0;
-    ll j = n - 1;
-    long long maxi = LLONG_MIN;
-    ll ct = 0;
-    a += v[i];
-    b += v[j];
-    while (i < j)
+    for (int i = 1; i <= 5; i++)
     {
-
-        if (a < b)
-        {
-            i++;
-            a += v[i];
-        }
-        else if (b < a)
-        {
-            j--;
-            b += v[j];
-        }
-        else
-        {
-            ct = (i + 1) + (n - j);
-            maxi = max(ct, maxi);
-            i++;
-            j--;
-            a += v[i];
-            b += v[j];
-        }
+        for (int j = 1; j <= i; j++)
+            cout << j << " ";
     }
-    outl(max(ct, maxi));
+    cout << endl;
 }
 
 int main()

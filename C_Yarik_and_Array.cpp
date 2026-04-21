@@ -15,7 +15,7 @@ using namespace std;
 #define nl cout << endl
 
 #define def1(n) \
-    ll n;      \
+    ll n;       \
     cin >> n
 #define def2(a, b) \
     ll a, b;       \
@@ -38,8 +38,8 @@ using namespace std;
 #define out4(a, b, c, d) cout << a << " " << b << " " << c << " " << d << endl
 #define out5(a, b, c, d, e) cout << a << " " << b << " " << c << " " << d << " " << e << endl
 
-#define inv(v, n)             \
-    vi v(n);                  \
+#define inv(v, n)              \
+    vi v(n);                   \
     for (ll i = 0; i < n; i++) \
         cin >> v[i];
 
@@ -67,8 +67,31 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n); inv(v,n);
-    
+    int n;
+    cin >> n;
+
+    vector<int> v(n);
+    for (int i = 0; i < n; i++) cin >> v[i];
+
+    long long curr = v[0];
+    long long ans = v[0];
+
+    for (int i = 1; i < n; i++)
+    {
+        // same parity → break
+        if ((v[i] % 2) == (v[i - 1] % 2))
+        {
+            curr = v[i];
+        }
+        else
+        {
+            curr = max((long long)v[i], curr + v[i]);
+        }
+
+        ans = max(ans, curr);
+    }
+
+    cout << ans << endl;
 }
 
 int main()

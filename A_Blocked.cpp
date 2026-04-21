@@ -69,38 +69,16 @@ void solve()
 {
     def1(n);
     inv(v, n);
-    ll a = 0;
-    ll b = 0;
-    ll i = 0;
-    ll j = n - 1;
-    long long maxi = LLONG_MIN;
-    ll ct = 0;
-    a += v[i];
-    b += v[j];
-    while (i < j)
+    set<int> s(v.begin(), v.end());
+    if (s.size() < v.size())
     {
-
-        if (a < b)
-        {
-            i++;
-            a += v[i];
-        }
-        else if (b < a)
-        {
-            j--;
-            b += v[j];
-        }
-        else
-        {
-            ct = (i + 1) + (n - j);
-            maxi = max(ct, maxi);
-            i++;
-            j--;
-            a += v[i];
-            b += v[j];
-        }
+        outl(-1);
+        return;
     }
-    outl(max(ct, maxi));
+    sortvr(v);
+    for (auto &i : v)
+        cout << i << " ";
+    cout << endl;
 }
 
 int main()
