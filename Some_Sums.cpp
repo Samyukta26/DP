@@ -64,28 +64,29 @@ ll power(ll x, ll y)
     }
     return res;
 }
-
+int f(int n)
+{
+    int sum = 0;
+    while (n > 0)
+    {
+        int d = n % 10;
+        sum += d;
+        n /= 10;
+    }
+    return sum;
+}
 void solve()
 {
-    def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    def3(n, a, b);
+    ll sum = 0;
+    while (n > 0)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
+        int x = f(n);
+        if (x >= a && x <= b)
+            sum += n;
+        n--;
     }
-    outl(ct+1);
+    outl(sum);
 }
 
 int main()
@@ -94,7 +95,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

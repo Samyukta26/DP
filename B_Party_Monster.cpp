@@ -70,22 +70,19 @@ void solve()
     def1(n);
     string s;
     cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    ll ct = 0;
+    ll ctt = 0;
+    for (auto &c : s)
+        if (c == '(')
+            ct++;
+        else
+            ctt++;
+    if (ct == ctt)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
+        outl("YES");
         return;
     }
-    outl(ct+1);
+    outl("NO");
 }
 
 int main()

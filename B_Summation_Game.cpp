@@ -67,25 +67,38 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    def3(n, a, b);
+    inv(v, n);
+    sort(v.begin(), v.end());
+    ll sum = 0;
+    ll sum1 = 0;
+    for (int i = n - 1; i >= b; i--)
+        sum += v[i];
+    for (int i = 0; i < n - b; i++)
+        sum1 += v[i];
+    if (sum1 >= sum)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
+        outl(sum1 - sum);
         return;
     }
-    outl(ct+1);
+    ll ct = 0;
+    for (int i = n - 1; i >= n - a; i--)
+    {
+        ct += v[i];
+    }
+    ll z = accumulate(v.begin(), v.end(), 0);
+    long long neg = 0;
+
+    int last = n - a - 1;
+
+    for (int i = last; i >= max(0LL, last - b + 1); i--)
+    {
+        neg += v[i];
+    }
+
+    ll remaining = z - ct;
+    long long ans = remaining - 2 * neg;
+    outl(ans);
 }
 
 int main()

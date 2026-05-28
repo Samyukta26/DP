@@ -68,24 +68,27 @@ ll power(ll x, ll y)
 void solve()
 {
     def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    ll sum = 0;
+    inv(v, n);
+    ll ct = 0;
+    ll one = 0;
+    ll two = 0;
+    for (int i = 0; i < n; i++)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
+        if (v[i] == 0)
+            ct++;
+        else if (v[i] == 1)
+            one++;
+        else
+            two++;
     }
-    outl(ct+1);
+    ll a = min(one, two);
+    ct += a;
+    one -= a;
+    two -= a;
+    ct += one / 3;
+    ct += two / 3;
+    outl(ct);
 }
 
 int main()

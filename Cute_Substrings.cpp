@@ -70,22 +70,19 @@ void solve()
     def1(n);
     string s;
     cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    int maxi = INT_MIN;
+    int ct = 0;
+    for (int i = 0; i < n; i++)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
+        if ((i % 2 == 0) && (s[i] == 'u' || s[i] == 'o'))
+            ct++;
+        else if ((i & 1) && (s[i] == 'w'))
+            ct++;
+        else
+            ct = 0;
+        maxi = max(maxi, ct);
     }
-    outl(ct+1);
+    outl(maxi);
 }
 
 int main()

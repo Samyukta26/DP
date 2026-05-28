@@ -68,24 +68,41 @@ ll power(ll x, ll y)
 void solve()
 {
     def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    inv(v, n);
+
+    ll ct = 0;
+
+    for (auto &i : v)
+        ct += i;
+
+    ll b = ct / n;
+
+    ll maxi = 0;
+
+    for (int i = 0; i < n; i++)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
+        maxi = max(maxi, llabs(b - v[i]));
     }
-    outl(ct+1);
+
+    ll b1 = b - 1;
+
+    ll maxii = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        maxii = max(maxii, llabs(b1 - v[i]));
+    }
+
+    ll b2 = b + 1;
+
+    ll mox = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        mox = max(mox, llabs(v[i] - b2));
+    }
+
+    cout << min(maxi, min(maxii, mox)) << endl;
 }
 
 int main()

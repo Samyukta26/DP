@@ -67,25 +67,28 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    def2(n, p);
+    multiset<ll> m;
+    for (int i = 0; i < n; i++)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
+        int x;
+        cin >> x;
+        m.insert(x);
     }
-    outl(ct+1);
+    while (p--)
+    {
+        int x;
+        cin >> x;
+        auto it = m.upper_bound(x);
+        if (it == m.begin())
+            outl(-1);
+        else
+        {
+            --it;
+            outl(*it);
+            m.erase(it);
+        }
+    }
 }
 
 int main()
@@ -94,7 +97,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

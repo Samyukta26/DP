@@ -68,24 +68,30 @@ ll power(ll x, ll y)
 void solve()
 {
     def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    inv(v, n);
+    vector<int> A, B, C, D;
+    for (int x : v)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
+        if (x % 6 == 0)
+            A.push_back(x);
+        else if (x % 2 == 0)
+            B.push_back(x);
+        else if (x % 3 == 0)
+            C.push_back(x);
+        else
+            D.push_back(x);
     }
-    outl(ct+1);
+
+    for (int x : B)
+        cout << x << " ";
+    for (int x : D)
+        cout << x << " ";
+    for (int x : C)
+        cout << x << " ";
+    for (int x : A)
+        cout << x << " ";
+
+    cout << endl;
 }
 
 int main()

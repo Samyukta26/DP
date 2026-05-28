@@ -64,29 +64,75 @@ ll power(ll x, ll y)
     }
     return res;
 }
-
 void solve()
 {
     def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+
+    ll maxi = LLONG_MIN;
+    ll mini = LLONG_MAX;
+
+    set<ll> s;
+
+    while (n--)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
+        ll a, b;
+        cin >> a >> b;
+
+        if (a == 1)
+            maxi = max(maxi, b);
+
+        else if (a == 2)
+            mini = min(mini, b);
+
+        else
+            s.insert(b);
+    }
+
+    if (maxi > mini)
+    {
+        outl(0);
         return;
     }
-    outl(ct+1);
+
+    ll ct = 0;
+
+    for (auto x : s)
+    {
+        if (x >= maxi && x <= mini)
+            ct++;
+    }
+
+    ll ans = (mini - maxi + 1) - ct;
+
+    outl(ans);
 }
+
+// void solve()
+// {
+//     def1(n);
+//     ll maxi = LLONG_MIN;
+//     ll mini = LLONG_MAX;
+//     set<ll> s;
+//     while (n--)
+//     {
+//         ll a, b;
+//         cin >> a >> b;
+//         if (a == 1)
+//             maxi = max(maxi, b);
+//         else if (a == 2)
+//             mini = min(mini, b);
+//         else
+//             s.insert(b);
+//     }
+//     ll ct = 0;
+
+//     for (auto x : s)
+//     {
+//         if (x >= maxi && x <= mini)
+//             ct++;
+//     }
+//     outl(ct);
+// }
 
 int main()
 {

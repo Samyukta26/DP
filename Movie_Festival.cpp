@@ -68,24 +68,22 @@ ll power(ll x, ll y)
 void solve()
 {
     def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    vector<pair<ll, ll>> v(n);
+    for (int i = 0; i < n; i++)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
+        cin >> v[i].first >> v[i].second;
     }
-    outl(ct+1);
+    sort(v.begin(), v.end(), [](auto &a, auto &b)
+         { return a.second < b.second; });
+    ll ct = 0;
+    ll a = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (v[i].first > a)
+            ct++;
+        a = v[i].first;
+    }
+    outl(ct);
 }
 
 int main()
@@ -94,7 +92,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

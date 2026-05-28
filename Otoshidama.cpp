@@ -64,28 +64,25 @@ ll power(ll x, ll y)
     }
     return res;
 }
-
 void solve()
 {
-    def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    def2(n, x);
+
+    for (ll i = 0; i <= n; i++)
     {
-        for (int i = 0; i < n - 1; i++)
+        for (ll j = 0; j <= (n - i); j++)
         {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
+            ll z = n - i - j;
+
+            if ((10000 * i + 5000 * j + z * 1000) == x)
+            {
+                cout << i << " " << j << " " << z << endl;
+                return;
+            }
         }
-        outl(ct);
-        return;
     }
-    outl(ct+1);
+
+    cout << -1 << " " << -1 << " " << -1 << endl;
 }
 
 int main()
@@ -94,7 +91,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

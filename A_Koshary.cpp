@@ -15,7 +15,7 @@ using namespace std;
 #define nl cout << endl
 
 #define def1(n) \
-    ll n;       \
+    ll n;      \
     cin >> n
 #define def2(a, b) \
     ll a, b;       \
@@ -38,8 +38,8 @@ using namespace std;
 #define out4(a, b, c, d) cout << a << " " << b << " " << c << " " << d << endl
 #define out5(a, b, c, d, e) cout << a << " " << b << " " << c << " " << d << " " << e << endl
 
-#define inv(v, n)              \
-    vi v(n);                   \
+#define inv(v, n)             \
+    vi v(n);                  \
     for (ll i = 0; i < n; i++) \
         cin >> v[i];
 
@@ -67,25 +67,9 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
-    {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
-    }
-    outl(ct+1);
+    def2(x,y);
+    if((x&1) && (y&1)){ outl("NO"); return;}
+    outl("YES");
 }
 
 int main()

@@ -67,25 +67,17 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    int n;
+    cin >> n;
+
+    for (int i = n; i >= 1; i--)
     {
-        for (int i = 0; i < n - 1; i++)
+        for (char c = 'A'; c < 'A' + i; c++)
         {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
+            cout << c;
         }
-        outl(ct);
-        return;
+        cout << endl;
     }
-    outl(ct+1);
 }
 
 int main()
@@ -98,4 +90,11 @@ int main()
     while (t--)
         solve();
     return 0;
+}
+
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
 }

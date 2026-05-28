@@ -67,27 +67,39 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
     string s;
     cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+
+    ll ct = count(s.begin(), s.end(), '4');
+
+    if (s.size() == 1 && ((s[0] - '0') % 4 == 0))
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
+        outl(1);
         return;
     }
-    outl(ct+1);
-}
 
+    string s1 = "";
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] != '4')
+            s1 += s[i];
+    }
+    bool b = false;
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == '1' || s[i] == '3')
+        {
+            b = true;
+        }
+        else if (s[i] == '2' && b)
+        {
+            ct++;
+        }
+    }
+    outl(ct);a
+}
 int main()
 {
     ios::sync_with_stdio(false);

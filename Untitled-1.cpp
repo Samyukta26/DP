@@ -67,25 +67,24 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    def2(n,target);
+    inv(v, n);
+    ll low = 0;
+    ll high = n - 1;
+    while (low <= high)
     {
-        for (int i = 0; i < n - 1; i++)
+        ll mid = (low + high) / 2;
+        if (v[mid] == target)
         {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
+            outl("YES");
+            return;
         }
-        outl(ct);
-        return;
+        else if (v[mid] < target)
+            low = mid + 1;
+        else
+            high = mid - 1;
     }
-    outl(ct+1);
+    outl("NO");
 }
 
 int main()

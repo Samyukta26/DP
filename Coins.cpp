@@ -68,24 +68,15 @@ ll power(ll x, ll y)
 void solve()
 {
     def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    inv(v, n);
+    vi pref(n);
+    pref[0] = v[0];
+    for (int i = 1; i < n; i++)
     {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
+        pref[i] = pref[i - 1] + v[i];
     }
-    outl(ct+1);
+    for (auto &i : pref)
+        cout << i << " ";
 }
 
 int main()
@@ -94,7 +85,7 @@ int main()
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

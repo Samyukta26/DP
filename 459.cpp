@@ -67,34 +67,49 @@ ll power(ll x, ll y)
 
 void solve()
 {
-    def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
-    {
-        for (int i = 0; i < n - 1; i++)
-        {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
-        }
-        outl(ct);
-        return;
-    }
-    outl(ct+1);
-}
+    int n;
+    cin >> n;
+    cin.ignore();
 
+    string s;
+    getline(cin, s);
+
+    vector<int> v;
+
+    for (int i = 1; i <= 3; i++)
+        v.push_back(2);
+    for (int i = 1; i <= 3; i++)
+        v.push_back(3);
+    for (int i = 1; i <= 3; i++)
+        v.push_back(4);
+    for (int i = 1; i <= 3; i++)
+        v.push_back(5);
+    for (int i = 1; i <= 3; i++)
+        v.push_back(6);
+    for (int i = 1; i <= 4; i++)
+        v.push_back(7);
+    for (int i = 1; i <= 3; i++)
+        v.push_back(8);
+    for (int i = 1; i <= 4; i++)
+        v.push_back(9);
+
+    cout << v[s[0] - 'a'];
+
+    for (int i = 1; i < s.length(); i++)
+    {
+        if (s[i - 1] == ' ')
+        {
+            cout << v[s[i] - 'a'];
+        }
+    }
+}
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
         solve();
     return 0;

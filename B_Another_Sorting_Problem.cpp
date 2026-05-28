@@ -68,24 +68,32 @@ ll power(ll x, ll y)
 void solve()
 {
     def1(n);
-    string s;
-    cin >> s;
-    ll a = count(s.begin(), s.end(), '0');
-    if (s[0])
-        ll ct = 0;
-    if ((s[0] == '0') || (s[0] != '0' && a > 0))
+    inv(v, n);
+
+    ll a = 0;
+
+    for (int i = 0; i < n - 1; i++)
     {
-        for (int i = 0; i < n - 1; i++)
+        if (v[i] > v[i + 1])
         {
-            if (s[i] != s[i + 1])
-                ct += 2;
-            else
-                ct++;
+            a = max(a, v[i] - v[i + 1]);
         }
-        outl(ct);
-        return;
     }
-    outl(ct+1);
+
+    vector<ll> b = v;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (b[i] > b[i + 1])
+        {
+            b[i + 1] += a;
+        }
+    }
+
+    if (is_sorted(b.begin(), b.end()))
+        outl("YES");
+    else
+        outl("NO");
 }
 
 int main()
